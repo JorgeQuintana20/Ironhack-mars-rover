@@ -1,14 +1,18 @@
 // Rover Object Goes Here
 // ======================
-
+//Not sure how to do travelLog
 let rover = {
   direction: "N",
-  x: 0,
-  y: 0,
-  travellog : "(x, y)"
+  x : 0,
+  y : 0,
+  travelLog : [[0,0]]
 }
 
 // ======================
+
+x = 0;
+
+y = 0;
 
 function turnLeft(rover) {
   if (rover.direction == "N") {
@@ -20,9 +24,10 @@ function turnLeft(rover) {
   else if (rover.direction == "S") {
     rover.direction = "E";
   }
-  else (rover.direction == "E") {
+  else if (rover.direction == "E") {
     rover.direction = "N";
   }
+  console.log("turnLeft was called!");
 }
 
 function turnRight(rover) {
@@ -35,14 +40,13 @@ function turnRight(rover) {
   else if (rover.direction == "S") {
     rover.direction = "W";
   }
-  else (rover.direction == "W") {
+  else if (rover.direction == "W") {
     rover.direction = "N";
   }
+  console.log("turnRight was called!");
 }
 
 function moveForward(rover) {
-  console.log("moveForward was called")
-
   if (rover.direction == "N") {
     rover.y = y - 1;
   }
@@ -52,23 +56,41 @@ function moveForward(rover) {
   else if (rover.direction == "S") {
     rover.y = y + 1;
   }
-  else (rover.direction == "W") {
+  else if (rover.direction == "W") {
     rover.x = x - 1;
   }
+  console.log("moveForward was called!")
 }
 
-console.log(rover);
+function moveBackwards(rover) {
+  if (rover.direction == "N") {
+    rover.y = y + 1;
+  }
+  else if (rover.direction == "E") {
+    rover.x = x - 1;
+  }
+  else if (rover.direction == "S") {
+    rover.y = y - 1;
+  }
+  else if (rover.direction == "W") {
+    rover.x = x + 1;
+  }
+  console.log("moveBackward was called!")
+}
 
-function reciever() {
-  for(var i = 0; i < rover.length; i++) {
-    if(moveForward === "f") {
-      console.log(moveForward())
+
+//Not sure how to do??
+function reciever(command) {
+  for(let i = 0; i < command; i++) {
+    if ("f" === moveForward) {
+      moveForward();
     }
-    else if(turnRight === "r") {
-      console.log(turnRight())
+    else if ("r" === turnRight) {
+      turnRight();
     }
-    else(turnLeft === "l") {
-      console.log(turnLeft())
+    else if ("l" === turnLeft) {
+      turnLeft();
     }
   }
 }
+
